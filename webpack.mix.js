@@ -12,4 +12,12 @@ let mix = require('laravel-mix');
  */
 
 mix.js('resources/assets/js/app.js', 'public/js')
-   .sass('resources/assets/sass/app.scss', 'public/css');
+    .scripts([
+        'public/js/app.js',
+        'vendor/konekt/appshell/src/resources/assets/js/appshell.js'
+    ],
+        'public/js/app.js'
+    )
+    .sass(
+        'vendor/konekt/appshell/src/resources/assets/sass/appshell.sass', 'public/css'
+    );
