@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="{{ app()->getLocale() }}">
 <head>
@@ -10,6 +9,13 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>{{ config('app.name', 'Laravel') }}</title>
+
+    <!-- Scripts -->
+    <script src="{{ asset('js/app.js') }}" defer></script>
+
+    <!-- Fonts -->
+    <link rel="dns-prefetch" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css?family=Raleway:300,400,600" rel="stylesheet" type="text/css">
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
@@ -30,7 +36,7 @@
 
                 <!-- Branding Image -->
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Demo') }}
+                    Demo
                 </a>
             </div>
 
@@ -44,7 +50,7 @@
                 <ul class="nav navbar-nav navbar-right">
                     <li><a href="{{ route('shop.index') }}">Productos</a></li>
                     <li>
-                        <a href="{{ route('cart.show') }}">Carrito de compras
+                        <a href="{{ route('cart.show') }}">Carrito de Compras
                             @if (Cart::isNotEmpty())
                                 ({{ Cart::itemCount() }})
                             @endif
@@ -52,11 +58,11 @@
                     </li>
                     <!-- Authentication Links -->
                     @guest
-                        <li><a href="{{ route('login') }}">{{ __("Login") }}</a></li>
-                        <li><a href="{{ route('register') }}">{{ __("Register") }}</a></li>
+                        <li><a href="{{ route('login') }}">{{ __('Login') }}</a></li>
+                        <li><a href="{{ route('register') }}">{{ __('Register') }}</a></li>
                     @else
                         @role('admin')
-                        <li><a href="{{ config('konekt.app_shell.ui.url') }}">Panel de Administración</a></li>
+                        <li><a href="{{ config('konekt.app_shell.ui.url') }}">Admin</a></li>
                         @endrole
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
@@ -68,7 +74,7 @@
                                     <a href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                        {{ __("Logout") }}
+                                        {{ __('Logout') }}
                                     </a>
 
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
